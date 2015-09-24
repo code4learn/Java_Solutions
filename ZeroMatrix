@@ -1,0 +1,24 @@
+//Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.
+    public int[][] scanMatrixForZero(int[][] input){
+        int[][] output= new int[input.length][input[0].length];
+        for(int i =0 ; i < input.length ; i++){
+
+            for(int j = 0 ; j<input[0].length;j++){
+                output[i][j]=input[i][j];
+            }
+        }
+
+        for(int i =0 ; i < input.length ; i++){
+
+            for(int j = 0 ; j<input[0].length;j++){
+                if(input[i][j]==0){
+                    Arrays.fill(output[i],0);
+                    for(int k =0;k<input[0].length;k++){
+                        output[k][j]=0;
+                    }
+                }
+            }
+        }
+        System.out.println(Arrays.deepToString(output));
+        return output;
+    }

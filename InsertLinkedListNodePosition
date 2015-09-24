@@ -1,0 +1,42 @@
+/*
+  Insert Node at the end of a linked list 
+  head pointer input could be NULL as well for empty list
+  Node is defined as 
+  class Node {
+     int data;
+     Node next;
+  }
+*/
+Node InsertNth(Node head, int data, int position) {
+
+    Node node_head = head;
+    
+    //Inserting new node 
+    Node new_node = new Node();
+    new_node.data = data; 
+        
+    //if Node is null and position is also Zero
+    if(head == null && position == 0){
+         head = new_node;
+    }
+    
+    if(head != null){
+        if(position== 0){
+            new_node.next=head;
+            node_head=new_node;
+        }
+        else{
+            int searchPos =0;
+            while(searchPos < position-1){
+                head=head.next;
+                searchPos++;
+            }
+            if(searchPos +1 == position){
+                new_node.next=head.next;
+                head.next = new_node;    
+            } 
+        }      
+    }
+  return node_head;
+}
+

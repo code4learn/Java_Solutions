@@ -1,0 +1,44 @@
+/*
+  Insert Node at the end of a linked list 
+  head pointer input could be NULL as well for empty list
+  Node is defined as 
+  class Node {
+     int data;
+     Node next;
+  }
+*/
+
+Node Reverse(Node head) {
+  Node revhead =null;
+    
+    //Exit Condition from Recursion
+    if(head== null){
+        revhead= null;
+    }
+    
+    if(head != null){
+         revhead=Reverse(head.next);
+        
+        if(revhead == null){
+            Node tmp = new Node();
+            tmp.data = head.data;  
+            revhead=tmp;
+        }
+        else{
+            
+            //Addition of new node
+            Node tmp = new Node();
+            tmp.data = head.data;
+            
+            //Storing the head of reversed linked list
+            Node nodehead = revhead;
+            
+            //iterate to go till end of link list
+            while(revhead.next!= null){revhead=revhead.next;}
+            revhead.next=tmp;
+            revhead=nodehead;
+        }
+    }
+  return revhead;  
+}
+
